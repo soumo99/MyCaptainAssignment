@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Product Detail</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style type="text/css">
+      
+                  /*****************globals*************/
+                  body {
+                    font-family: 'open sans';
+                    overflow-x: hidden; }
+
+                  img {
+                    max-width: 100%; }
+
+                  .preview {
+                    display: -webkit-box;
+                    display: -webkit-flex;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-box-orient: vertical;
+                    -webkit-box-direction: normal;
+                    -webkit-flex-direction: column;
+                        -ms-flex-direction: column;
+                            flex-direction: column; }
+                    @media screen and (max-width: 996px) {
+                      .preview {
+                        margin-bottom: 20px; } }
+
+                  .preview-pic {
+                    -webkit-box-flex: 1;
+                    -webkit-flex-grow: 1;
+                        -ms-flex-positive: 1;
+                            flex-grow: 1; }
+
+                  .preview-thumbnail.nav-tabs {
+                    border: none;
+                    margin-top: 15px; }
+                    .preview-thumbnail.nav-tabs li {
+                      width: 18%;
+                      margin-right: 2.5%; }
+                      .preview-thumbnail.nav-tabs li img {
+                        max-width: 100%;
+                        display: block; }
+                      .preview-thumbnail.nav-tabs li a {
+                        padding: 0;
+                        margin: 0; }
+                      .preview-thumbnail.nav-tabs li:last-of-type {
+                        margin-right: 0; }
+
+                  .tab-content {
+                    overflow: hidden; }
+                    .tab-content img {
+                      width: 100%;
+                      -webkit-animation-name: opacity;
+                              animation-name: opacity;
+                      -webkit-animation-duration: .3s;
+                              animation-duration: .3s; }
+
+                  .card {
+                    margin-top: 50px;
+                    background: #eee;
+                    padding: 3em;
+                    line-height: 1.5em; }
+
+                  @media screen and (min-width: 997px) {
+                    .wrapper {
+                      display: -webkit-box;
+                      display: -webkit-flex;
+                      display: -ms-flexbox;
+                      display: flex; } }
+
+                  .details {
+                    display: -webkit-box;
+                    display: -webkit-flex;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-box-orient: vertical;
+                    -webkit-box-direction: normal;
+                    -webkit-flex-direction: column;
+                        -ms-flex-direction: column;
+                            flex-direction: column; }
+
+                  .colors {
+                    -webkit-box-flex: 1;
+                    -webkit-flex-grow: 1;
+                        -ms-flex-positive: 1;
+                            flex-grow: 1; }
+
+                  .product-title, .price, .sizes, .colors {
+                    text-transform: UPPERCASE;
+                    font-weight: bold; }
+
+                  .checked, .price span {
+                    color: #ff9f1a; }
+
+                  .product-title, .rating, .product-description, .price, .vote, .sizes {
+                    margin-bottom: 15px; }
+
+                  .product-title {
+                    margin-top: 0; }
+
+                  .size {
+                    margin-right: 10px; }
+                    .size:first-of-type {
+                      margin-left: 40px; }
+
+                  .color {
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 10px;
+                    height: 2em;
+                    width: 2em;
+                    border-radius: 2px; }
+                    .color:first-of-type {
+                      margin-left: 20px; }
+
+                  .add-to-cart, .like {
+                    background: #ff9f1a;
+                    padding: 1.2em 1.5em;
+                    border: none;
+                    text-transform: UPPERCASE;
+                    font-weight: bold;
+                    color: #fff;
+                    -webkit-transition: background .3s ease;
+                            transition: background .3s ease; }
+                    .add-to-cart:hover, .like:hover {
+                      background: #b36800;
+                      color: #fff; }
+
+                  .not-available {
+                    text-align: center;
+                    line-height: 2em; }
+                    .not-available:before {
+                      font-family: fontawesome;
+                      content: "\f00d";
+                      color: #fff; }
+
+                  .orange {
+                    background: #ff9f1a; }
+
+                  .green {
+                    background: #85ad00; }
+
+                  .blue {
+                    background: #0076ad; }
+
+                  .tooltip-inner {
+                    padding: 1.3em; }
+
+                  @-webkit-keyframes opacity {
+                    0% {
+                      opacity: 0;
+                      -webkit-transform: scale(3);
+                              transform: scale(3); }
+                    100% {
+                      opacity: 1;
+                      -webkit-transform: scale(1);
+                              transform: scale(1); } }
+
+                  @keyframes opacity {
+                    0% {
+                      opacity: 0;
+                      -webkit-transform: scale(3);
+                              transform: scale(3); }
+                    100% {
+                      opacity: 1;
+                      -webkit-transform: scale(1);
+                              transform: scale(1); } }
+
+                  /*# sourceMappingURL=style.css.map */
+                      </style>
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light bg-light">
+        
+              <a class="navbar-brand">Product Details</a>
+              <form class="form-inline">
+                <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+                <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Signup</button> -->
+              </form>
+        
+        </nav>
+  
+  <div class="container">
+    <div class="card">
+      <div class="container-fliud">
+        <div class="wrapper row">
+          <div class="preview col-md-6">
+            
+            <div class="preview-pic tab-content">
+              <div class="tab-pane active" id="pic-1"><img src="https://images.unsplash.com/photo-1580522154071-c6ca47a859ad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" /></div>
+              <div class="tab-pane" id="pic-2"><img src="https://images.unsplash.com/photo-1542393545-10f5cde2c810?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" /></div>
+              <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
+              <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
+              <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+            </div>
+            <ul class="preview-thumbnail nav nav-tabs">
+              <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="https://images.unsplash.com/photo-1507470855518-469f3b3dad25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fG1hY2Jvb2slMjBwcm98ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" /></a></li>
+              <li><a data-target="#pic-2" data-toggle="tab"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1hY2Jvb2slMjBwcm98ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" /></a></li>
+              <li><a data-target="#pic-3" data-toggle="tab"><img src="https://images.unsplash.com/photo-1606568156390-8f4edb5ef31f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fG1hY2Jvb2slMjBwcm98ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" /></a></li>
+              <li><a data-target="#pic-4" data-toggle="tab"><img src="https://images.unsplash.com/photo-1485988412941-77a35537dae4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fG1hY2Jvb2slMjBwcm98ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" /></a></li>
+              <li><a data-target="#pic-5" data-toggle="tab"><img src="https://images.unsplash.com/photo-1537498425277-c283d32ef9db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" /></a></li>
+            </ul>
+            
+          </div>
+          <div class="details col-md-6">
+            <h3 class="product-title">13'' MacBook Pro M1</h3>
+            <div class="rating">
+              <div class="stars">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+              </div>
+              <span class="review-no">1000+ reviews</span>
+            </div>
+            <p class="product-description">M1 Chip
+Small chip. Giant leap.
+
+It’s here. Our first chip designed specifically for Mac. Packed with an astonishing 16 billion transistors, the Apple M1 system on a chip (SoC) integrates the CPU, GPU, Neural Engine, I/O and so much more onto a single tiny chip. With incredible performance, custom technologies and industry-leading power efficiency,1 M1 is not just a next step for Mac — it’s another level entirely.
+</p>
+            <h4 class="text-lowercase"><span>Apple M1 Chip with 8‑Core CPU and 8‑Core GPU
+256GB SSD Storage - ₹122900.00 <br> Apple M1 Chip with 8‑Core CPU and 8‑Core GPU
+512GB SSD Storage - ₹142900.00</span></h4>
+            <p class="vote"><strong>98%</strong> of buyers enjoyed this product! <strong>(1K+ votes)</strong></p>
+            
+            
+            <div class="action">
+              <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+              <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+        <div class="card">
+      <div class="container-fliud">
+        <div class="wrapper row">
+          <div class="preview col-md-6">
+            
+            <div class="preview-pic tab-content">
+              <div class="tab-pane active" id="pic-1"><img src="https://images.unsplash.com/photo-1616400619175-5beda3a17896?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bWFjYm9vayUyMGFpcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" /></div>
+              <div class="tab-pane" id="pic-2"><img src="https://images.unsplash.com/photo-1542393545-10f5cde2c810?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" /></div>
+              <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
+              <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
+              <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+            </div>
+            <ul class="preview-thumbnail nav nav-tabs">
+              <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="https://images.unsplash.com/photo-1610277027770-abb0f444c4e4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bWFjYm9vayUyMGFpcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" /></a></li>
+              <li><a data-target="#pic-2" data-toggle="tab"><img src="https://images.unsplash.com/photo-1625766763788-95dcce9bf5ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWFjYm9vayUyMGFpcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" /></a></li>
+              <li><a data-target="#pic-3" data-toggle="tab"><img src="https://images.unsplash.com/photo-1522169799806-79cb544552bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG1hY2Jvb2slMjBhaXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" /></a></li>
+              <li><a data-target="#pic-4" data-toggle="tab"><img src="https://images.unsplash.com/photo-1606560114363-e60d00c93734?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fG1hY2Jvb2slMjBhaXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" /></a></li>
+              <li><a data-target="#pic-5" data-toggle="tab"><img src="https://images.unsplash.com/photo-1574529395396-21637c4cf5df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1hY2Jvb2slMjBhaXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" /></a></li>
+            </ul>
+            
+          </div>
+          <div class="details col-md-6">
+            <h3 class="product-title">13'' MacBook Air M1</h3>
+            <div class="rating">
+              <div class="stars">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+              </div>
+              <span class="review-no">1000+ reviews</span>
+            </div>
+            <p class="product-description">The 8‑core CPU on M1 isn’t just up to 3.5x faster than the previous generation2 — it balances high-performance cores with efficiency cores that crush everyday jobs while using just a tenth of the power. With that kind of processing speed, MacBook Air can take on new extraordinarily intensive tasks like professional-quality editing and action-packed gaming.</p>
+            <h4 class="text-lowercase"><span> Apple M1 Chip with 8‑Core CPU and 7‑Core GPU
+256GB Storage - ₹92900.00 <br> Apple M1 Chip with 8‑Core CPU and 8‑Core GPU
+512GB Storage - ₹117900.00</span></h4>
+            <p class="vote"><strong>95%</strong> of buyers enjoyed this product! <strong>(1K+ votes)</strong></p>
+            
+            
+            <div class="action">
+              <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+              <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <br>
+
+          <div class="card">
+      <div class="container-fliud">
+        <div class="wrapper row">
+          <div class="preview col-md-6">
+            
+            <div class="preview-pic tab-content">
+              <div class="tab-pane active" id="pic-1"><img src="https://images.unsplash.com/photo-1553103291-346188e304d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDR8fGlwYWQlMjBwcm98ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" /></div>
+              <div class="tab-pane" id="pic-2"><img src="https://images.unsplash.com/photo-1542393545-10f5cde2c810?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" /></div>
+              <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
+              <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
+              <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+            </div>
+            <ul class="preview-thumbnail nav nav-tabs">
+              <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="https://images.unsplash.com/photo-1623126908027-0ece32cdad9c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGlwYWQlMjBwcm98ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" /></a></li>
+              <li><a data-target="#pic-2" data-toggle="tab"><img src="https://images.unsplash.com/photo-1615515057524-302a334449ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGlwYWQlMjBwcm98ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" /></a></li>
+              <li><a data-target="#pic-3" data-toggle="tab"><img src="https://images.unsplash.com/photo-1564216329574-c839d4eedb1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzF8fGlwYWQlMjBwcm98ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" /></a></li>
+              <li><a data-target="#pic-4" data-toggle="tab"><img src="https://images.unsplash.com/photo-1565443492615-7e3d2324d925?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fGlwYWQlMjBwcm98ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" /></a></li>
+              <li><a data-target="#pic-5" data-toggle="tab"><img src="https://images.unsplash.com/photo-1587372723658-faa91cf660d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjB8fGlwYWQlMjBwcm98ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" /></a></li>
+            </ul>
+            
+          </div>
+          <div class="details col-md-6">
+            <h3 class="product-title">iPad Pro M1</h3>
+            <div class="rating">
+              <div class="stars">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+              </div>
+              <span class="review-no">1000+ reviews</span>
+            </div>
+            <p class="product-description">Faster performance and graphics. The 8‑core CPU of M1 delivers up to 50% faster performance. And M1 has an 8‑core GPU in a class of its own, delivering up to 40% faster graphics performance to iPad Pro. So you can build intricate AR models, play games with console‑quality graphics at high frame rates and more.</p>
+            <h4 class="text-lowercase"><span>27.96 cm-11-inch-display - ₹71900.00 <br> 32.77 cm-12.9-inch-display - ₹99900.00</span></h4>
+            <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(1K+ votes)</strong></p>
+            
+            
+            <div class="action">
+              <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+              <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</html>
